@@ -3,7 +3,7 @@ package designpattern.builder;
 public class Main {
 
     /**
-     * COMPONENT: Director
+     * COMPONENT: Product
      */
     public static class Computer {
         /**

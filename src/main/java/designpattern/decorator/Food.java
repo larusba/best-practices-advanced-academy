@@ -21,7 +21,7 @@ public class Food {
             // Output: Simple pizza, with cheese - $10.49
             
             System.out.println(salamiPizza.getDescription() + " - $" + salamiPizza.cost());
-            // Output: Simple pizza, with cheese, with pepperoni - $12.49
+            // Output: Simple pizza, with cheese, with salami - $12.49
         }
     }
 
