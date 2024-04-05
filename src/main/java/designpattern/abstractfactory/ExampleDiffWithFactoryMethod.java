@@ -1,7 +1,7 @@
-package codesmell.polymorphism;
+package designpattern.abstractfactory;
 
-/** We create different method based on enum */
-public class MainAfterWithLambdaFactoryMethod {
+/** We create different METHODS based on enum */
+public class ExampleDiffWithFactoryMethod {
     enum PeopleType {
         EUROPEAN("Aldo", 1000),
         AFRICAN("Giovanni", 99),
@@ -24,18 +24,8 @@ public class MainAfterWithLambdaFactoryMethod {
         }
     }
 
-    /**
-     * Enum Factory Method Design Pattern without People interface
-     *
-     * <p>With multiple enum constructor parameter and complex methods is better to use the
-     * MainAfterWithAbstractFactory mode for example --> getName(String something, int else) {
-     * .-long implementation.} we should do some lambdas --> `ASIAN( (something, else) -> {
-     * implementation } )`
-     */
+    /** Enum Factory Method Design Pattern */
     public void main(String[] args) {
-        //
-        // NOTA BENE: ENUMS ARE SINGLETONS
-        //
         PeopleType people = PeopleType.AFRICAN;
 
         // respect Open/Closed Principle

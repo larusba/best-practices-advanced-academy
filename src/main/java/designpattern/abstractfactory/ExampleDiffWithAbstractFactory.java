@@ -1,7 +1,7 @@
-package codesmell.polymorphism;
+package designpattern.abstractfactory;
 
 /** We create different INSTANCES based on enum */
-public class MainAfterWithAbstractFactory {
+public class ExampleDiffWithAbstractFactory {
     enum PeopleType {
         EUROPEAN(new European()),
         AFRICAN(new African()),
