@@ -1,6 +1,14 @@
 package designpattern.template;
 
 public class Main {
+    
+    public static class TemplateMethodDemo {
+        public static void main(String[] args) {
+            Generalization algorithm = new Realization();
+            algorithm.findSolution();
+        }
+    }
+    
     abstract static class Generalization {
         /**
          * Standardize the skeleton of an algorithm in a "template" method
@@ -68,13 +76,6 @@ public class Main {
         protected void stepFor() {
             System.out.println("Realization.stepFor");
             super.stepFor();
-        }
-    }
-
-    public static class TemplateMethodDemo {
-        public static void main(String[] args) {
-            Generalization algorithm = new Realization();
-            algorithm.findSolution();
         }
     }
 }

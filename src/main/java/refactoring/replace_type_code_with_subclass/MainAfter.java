@@ -7,7 +7,7 @@ public class MainAfter {
         static final int SALESMAN = 1;
         static final int MANAGER = 2;
 
-        abstract public int getType();
+        public abstract int getType();
 
         public static Employee create(int type) {
             switch (type) {
@@ -23,33 +23,43 @@ public class MainAfter {
         }
 
         public int monthlySalary;
+
         public int payAmount() {
             return monthlySalary;
         }
     }
 
     static class Engineer extends Employee {
-        @Override public int getType() {
+        @Override
+        public int getType() {
             return Employee.ENGINEER;
         }
     }
 
     static class Salesman extends Employee {
         public int commission;
-        @Override public int getType() {
+
+        @Override
+        public int getType() {
             return Employee.SALESMAN;
         }
-        @Override public int payAmount() {
+
+        @Override
+        public int payAmount() {
             return monthlySalary + commission;
         }
     }
 
     static class Manager extends Employee {
         public int bonus;
-        @Override public int getType() {
+
+        @Override
+        public int getType() {
             return Employee.MANAGER;
         }
-        @Override public int payAmount() {
+
+        @Override
+        public int payAmount() {
             return monthlySalary + bonus;
         }
     }

@@ -1,7 +1,9 @@
 package designpattern.adapter;
 
 public class MainBefore {
-    /** Line and Rectangle are conceptually similar but are incompatible */
+    /** Line and Rectangle are conceptually similar but are incompatible,
+     * since are different classes
+     */
     static class Line {
         public void draw(int x1, int y1, int x2, int y2) {
             System.out.println(

@@ -18,7 +18,7 @@ public class Main {
              * Potentially can be an expensive operation,
              * e.g. via a RestAPI...
              */
-            System.out.println("Loading   " + filename);
+            System.out.println("Loading..." + filename);
 
             try {
                 Thread.sleep(5000);

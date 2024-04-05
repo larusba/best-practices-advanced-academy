@@ -1,9 +1,9 @@
-//import static org.junit.Assert.assertEquals;
+// import static org.junit.Assert.assertEquals;
 //
-//import org.junit.Before;
-//import org.junit.Test;
+// import org.junit.Before;
+// import org.junit.Test;
 //
-//public class CalculatorRefactoredTest {
+// public class CalculatorRefactoredTest {
 //
 //    /** TODO : exercise: optimize something like here --> */
 //    private Calculator calculator;
@@ -17,7 +17,8 @@
 //     * variable (calculator) to avoid duplicating the code in each test method. This promotes code
 //     * reuse and makes the test class cleaner.
 //     *
-//     * <p>By refactoring the test class, we've made it more maintainable and reduced redundancy. The
+//     * <p>By refactoring the test class, we've made it more maintainable and reduced redundancy.
+// The
 //     * use of @Before ensures that each test starts with a fresh instance of the Calculator class,
 //     * and any changes to the instantiation or setup can be done in a single place.
 //     */
@@ -45,4 +46,4 @@
 //    public void testDivision() {
 //        assertEquals(4, calculator.divide(8, 2));
 //    }
-//}
+// }

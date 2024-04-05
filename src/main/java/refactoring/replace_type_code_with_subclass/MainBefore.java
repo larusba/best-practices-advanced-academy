@@ -16,8 +16,7 @@ public class MainBefore {
         public int monthlySalary;
         public int commission;
         public int bonus;
-        
-        
+
         public int payAmount() {
             switch (type) {
                 case ENGINEER:

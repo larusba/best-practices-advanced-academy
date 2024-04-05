@@ -1,6 +1,6 @@
-package codesmell;//package codesmell;
+package codesmell; // package codesmell;
 //
-//public class MethodObject {
+// public class MethodObject {
 //    class Order {
 //        // …
 //        // a lot of code …
@@ -25,4 +25,4 @@ package codesmell;//package codesmell;
 //    }
 //
 //
-//}
+// }

@@ -1,8 +1,7 @@
 package consumer;
 
-
 public class Product {
-    private final double price; 
+    private final double price;
     private final String name;
 
     public Product(String name, double price) {

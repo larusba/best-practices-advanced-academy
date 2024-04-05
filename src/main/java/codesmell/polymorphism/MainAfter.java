@@ -24,15 +24,11 @@ public class MainAfter {
         }
     }
 
-    /**
-     * Most of the time, we could solve it using an Enum Factory Design Pattern
-     * See 
-     */
+    /** Most of the time, we could solve it using an Enum Factory Design Pattern See */
     public static void main(String[] args) {
         African object = new African();
 
         // respect Open/Closed Principle
         object.getSpeed();
     }
-
 }

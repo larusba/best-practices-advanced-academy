@@ -12,9 +12,7 @@ public class MainBefore {
             return delta;
         }
 
-        /**
-         * Long method... we could extract it
-         */
+        /** Long method... we could extract it */
         int gamma(int inputVal, int quantity, int yearToDate) {
             int importantValue1 = (inputVal * quantity) + getDelta();
             int importantValue2 = (inputVal * yearToDate) + 100;

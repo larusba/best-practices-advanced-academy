@@ -9,35 +9,34 @@ public class NullObjectAfter {
         }
 
         public Customer getCustomer() {
-            return (customer == null) 
-                    ? new NullCustomer() 
-                    : customer;
+            return (customer == null) ? new NullCustomer() : customer;
         }
     }
 
     static class Customer {
-        //…
+        // …
         public String getName() {
             return "name";
         }
+
         public String getPlan() {
             return "plan";
         }
         // a lot of methods...
     }
 
-    /**
-     * Null Object
-     */
+    /** Null Object */
     static class NullCustomer extends Customer {
-        @Override public String getName() {
+        @Override
+        public String getName() {
             return "nullName";
         }
-        @Override public String getPlan() {
+
+        @Override
+        public String getPlan() {
             return "nullPlan";
         }
     }
-
 
     public static void main(String[] args) {
         Customer customer = new Company(null).getCustomer();

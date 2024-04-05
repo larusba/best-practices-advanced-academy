@@ -14,11 +14,7 @@ public class After {
         }
     }
 
-
-
-    /**
-     * No need cast, but duplicated classes
-     */
+    /** No need cast, but duplicated classes */
     public static class WithGenericsExample {
         public static void main(String[] args) {
             GenericBox<String> box1 = new GenericBox<>();
@@ -32,6 +28,4 @@ public class After {
             System.out.println(num);
         }
     }
-
-
 }

@@ -14,7 +14,6 @@ public class Before {
         }
     }
 
-
     public static class WithGenericsExample {
         public static void main(String[] args) {
             Box box = new Box();

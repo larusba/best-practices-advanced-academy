@@ -15,12 +15,15 @@ public class MainBefore {
             this.id = id;
             this.annualCost = annualCost;
         }
+
         public int getAnnualCost() {
             return annualCost;
         }
+
         public String getId() {
             return id;
         }
+
         public String getName() {
             return name;
         }
@@ -30,9 +33,7 @@ public class MainBefore {
         }
     }
 
-    /**
-     * The department has a list of Employee
-     */
+    /** The department has a list of Employee */
     static class Department {
         private final String name;
         private final String surname;
@@ -44,19 +45,15 @@ public class MainBefore {
             this.staff = staff;
         }
 
-        /**
-         * sum of employees annualCosts
-         */
+        /** sum of employees annualCosts */
         public int getTotalAnnualCost() {
-            return staff.stream()
-                    .mapToInt(Employee::getAnnualCost)
-                    .sum();
+            return staff.stream().mapToInt(Employee::getAnnualCost).sum();
         }
-        
+
         public int getHeadCount() {
             return staff.size();
         }
-        
+
         public String getName() {
             return name;
         }

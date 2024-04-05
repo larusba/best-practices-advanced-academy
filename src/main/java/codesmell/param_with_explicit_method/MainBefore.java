@@ -26,15 +26,12 @@ public class MainBefore {
         }
     }
 
-
-
     public static void main(String[] args) {
         // ideally a method..
         boolean weekend = true;
-                
+
         Order order = new Order(12.34);
-        
-        
+
         // Somewhere in client code
         if (weekend) {
             order.applyDiscount(Order.FIXED_DISCOUNT, 10);
@@ -43,5 +40,3 @@ public class MainBefore {
         }
     }
 }
-
-

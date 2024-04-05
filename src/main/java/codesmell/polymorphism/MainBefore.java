@@ -1,10 +1,10 @@
 package codesmell.polymorphism;
 
-
 public class MainBefore {
     static class People {
 
         int type;
+
         public People(int type) {
             this.type = type;
         }
@@ -28,5 +28,4 @@ public class MainBefore {
 
         object.getSpeed();
     }
-
 }

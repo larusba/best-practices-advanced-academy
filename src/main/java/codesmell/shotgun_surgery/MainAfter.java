@@ -7,7 +7,6 @@ public class MainAfter {
         private String accountNumber;
         private int amount;
 
-
         public Account(String type, String accountNumber, int amount) {
             this.amount = amount;
             this.type = type;
@@ -16,9 +15,7 @@ public class MainAfter {
 
         private boolean isAccountUnderflow() {
             return amount <= 500;
-
         }
-
 
         public void debit(int debit) throws Exception {
             if (isAccountUnderflow()) {
@@ -27,7 +24,6 @@ public class MainAfter {
 
             amount = amount - debit;
             System.out.println("Now amount is" + amount);
-
         }
 
         public void transfer(Account from, Account to, int cerditAmount) throws Exception {
@@ -36,11 +32,9 @@ public class MainAfter {
             }
             to.amount = amount + cerditAmount;
         }
-        
-        public void sendWarningMessage()
-        {
-            if(isAccountUnderflow())
-            {
+
+        public void sendWarningMessage() {
+            if (isAccountUnderflow()) {
                 System.out.println("amount should be over 500");
             }
         }

@@ -1,8 +1,6 @@
 package reflection;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
@@ -17,20 +15,22 @@ public class CompressionAlgo {
     }
 
     /**
-     * call e.g. a `new org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream(outputStream)`
-     * if `this.compressor` is `org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream.class`
+     * call e.g. a `new
+     * org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream(outputStream)` if
+     * `this.compressor` is
+     * `org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream.class`
      */
     public OutputStream getOutputStream(OutputStream outputStream) throws Exception {
-        return (OutputStream) compressor.getConstructor(OutputStream.class)
-                .newInstance(outputStream);
+        return (OutputStream)
+                compressor.getConstructor(OutputStream.class).newInstance(outputStream);
     }
 
     /**
-     * convert a String to a compressed byte[], e.g. using  GZIP algorithm
-     * 
-     * USAGE EXAMPLE: 
-     * new CompressionAlgo(org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream.class)
-     *      .compress("StringToCompress", "UTF-8")
+     * convert a String to a compressed byte[], e.g. using GZIP algorithm
+     *
+     * <p>USAGE EXAMPLE: new
+     * CompressionAlgo(org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream.class)
+     * .compress("StringToCompress", "UTF-8")
      */
     public byte[] compress(String string, Charset charset) throws Exception {
         try (ByteArrayOutputStream stream = new ByteArrayOutputStream()) {
@@ -41,7 +41,6 @@ public class CompressionAlgo {
         }
     }
     /*
-    
-     */
-}
 
+    */
+}

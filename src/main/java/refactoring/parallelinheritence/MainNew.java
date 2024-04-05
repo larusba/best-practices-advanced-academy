@@ -8,7 +8,7 @@ public class MainNew {
 
         @Override
         public String work() {
-            return"Build a Billing MicroService";
+            return "Build a Billing MicroService";
         }
 
         @Override
@@ -24,7 +24,7 @@ public class MainNew {
 
         @Override
         public void setType(String type) {
-            this.type=type;
+            this.type = type;
         }
 
         @Override
@@ -35,7 +35,7 @@ public class MainNew {
 
         @Override
         public void setSalary(int salary) {
-            this.salary=salary;
+            this.salary = salary;
         }
 
         @Override
@@ -51,15 +51,23 @@ public class MainNew {
 
         @Override
         public String toString() {
-            return "PartialComputerEngineer [type=" + type + ", salary=" + salary
-                   + ", work()=" + work() + ", target()=" + target()
-                   + ", getType()=" + getType() + ", getSalary()=" + getSalary()
-                   + "]";
+            return "PartialComputerEngineer [type="
+                    + type
+                    + ", salary="
+                    + salary
+                    + ", work()="
+                    + work()
+                    + ", target()="
+                    + target()
+                    + ", getType()="
+                    + getType()
+                    + ", getSalary()="
+                    + getSalary()
+                    + "]";
         }
     }
 
-
-    public static class PartialCivilEngineer implements Engineer,MileStone {
+    public static class PartialCivilEngineer implements Engineer, MileStone {
         private String type;
         private int salary;
 
@@ -80,7 +88,7 @@ public class MainNew {
 
         @Override
         public void setType(String type) {
-            this.type=type;
+            this.type = type;
         }
 
         @Override
@@ -91,7 +99,7 @@ public class MainNew {
 
         @Override
         public void setSalary(int salary) {
-            this.salary=salary;
+            this.salary = salary;
         }
 
         @Override
@@ -107,14 +115,22 @@ public class MainNew {
 
         @Override
         public String toString() {
-            return "PartialCivilEngineer [type=" + type + ", salary=" + salary
-                   + ", work()=" + work() + ", target()=" + target()
-                   + ", getType()=" + getType() + ", getSalary()=" + getSalary()
-                   + "]";
+            return "PartialCivilEngineer [type="
+                    + type
+                    + ", salary="
+                    + salary
+                    + ", work()="
+                    + work()
+                    + ", target()="
+                    + target()
+                    + ", getType()="
+                    + getType()
+                    + ", getSalary()="
+                    + getSalary()
+                    + "]";
         }
     }
-    
-    
+
     public static void main(String[] args) {
         Engineer comp = new PartialComputerEngineer();
         comp.setType("Computer Engineer");

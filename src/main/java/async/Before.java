@@ -7,17 +7,23 @@ public class Before {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         // 1. Creating CompletableFuture without specifying Executor
-        CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> {
-            // Blocking operation inside CompletableFuture
-            return performBlockingOperation();
-        });
+        CompletableFuture<Integer> future1 =
+                CompletableFuture.supplyAsync(
+                        () -> {
+                            // Blocking operation inside CompletableFuture
+                            return performBlockingOperation();
+                        });
 
         // 2. Chaining multiple CompletableFuture operations without proper exception handling
-        CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
-            return performComputation();
-        }).thenApply(result -> {
-            return result + 10;
-        });
+        CompletableFuture<Integer> future2 =
+                CompletableFuture.supplyAsync(
+                                () -> {
+                                    return performComputation();
+                                })
+                        .thenApply(
+                                result -> {
+                                    return result + 10;
+                                });
 
         // 3. Blocking the main thread by calling get() method
         Integer result = future1.get();

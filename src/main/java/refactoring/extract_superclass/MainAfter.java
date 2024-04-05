@@ -3,9 +3,7 @@ package refactoring.extract_superclass;
 import java.util.List;
 
 public class MainAfter {
-    /**
-     * Class with identical fields: name, surname
-     */
+    /** Class with identical fields: name, surname */
     abstract static class CompanyElement {
         protected final String name;
         protected final String surname;
@@ -14,7 +12,7 @@ public class MainAfter {
             this.name = name;
             this.surname = surname;
         }
-        
+
         public String getName() {
             return name;
         }
@@ -35,14 +33,15 @@ public class MainAfter {
             this.id = id;
             this.annualCost = annualCost;
         }
-        @Override public int getAnnualCost() {
+
+        @Override
+        public int getAnnualCost() {
             return annualCost;
         }
-        
+
         public String getId() {
             return id;
         }
-        
     }
 
     static class Department extends CompanyElement {
@@ -52,12 +51,12 @@ public class MainAfter {
             super(name, surname);
             this.staff = staff;
         }
-        @Override public int getAnnualCost() {
-            return staff.stream()
-                    .mapToInt(CompanyElement::getAnnualCost)
-                    .sum();
+
+        @Override
+        public int getAnnualCost() {
+            return staff.stream().mapToInt(CompanyElement::getAnnualCost).sum();
         }
-        
+
         public int getHeadCount() {
             return staff.size();
         }

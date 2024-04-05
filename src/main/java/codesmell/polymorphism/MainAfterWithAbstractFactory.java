@@ -1,14 +1,12 @@
 package codesmell.polymorphism;
 
-/**
- * We create different instances based on enum
- */
+/** We create different instances based on enum */
 public class MainAfterWithAbstractFactory {
     enum PeopleType {
         EUROPEAN(new European()),
         AFRICAN(new African()),
         ASIAN(new Asian());
-        
+
         private final People people;
 
         PeopleType(People people) {
@@ -19,9 +17,10 @@ public class MainAfterWithAbstractFactory {
             return people;
         }
     }
-    
+
     abstract static class People {
         abstract String getName();
+
         abstract int getSpeed();
     }
 
@@ -29,6 +28,7 @@ public class MainAfterWithAbstractFactory {
         String getName() {
             return "Aldo";
         }
+
         int getSpeed() {
             return 1000;
         }
@@ -38,6 +38,7 @@ public class MainAfterWithAbstractFactory {
         String getName() {
             return "Giovanni";
         }
+
         int getSpeed() {
             return 99;
         }
@@ -47,16 +48,15 @@ public class MainAfterWithAbstractFactory {
         String getName() {
             return "Giacomo";
         }
+
         int getSpeed() {
             return 33;
         }
     }
 
-    /**
-     * Enum Factory Method Design Pattern
-     */
+    /** Enum Factory Method Design Pattern */
     public void main(String[] args) {
-        // 
+        //
         // NOTA BENE: ENUMS ARE SINGLETONS
         //
         People people = PeopleType.AFRICAN.get();
@@ -64,9 +64,8 @@ public class MainAfterWithAbstractFactory {
         // respect Open/Closed Principle
         people.getName();
         people.getSpeed();
-        
+
         // we can also do
         PeopleType african = PeopleType.valueOf("ASIAN");
     }
-
 }

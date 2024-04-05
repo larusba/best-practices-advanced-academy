@@ -3,14 +3,14 @@ package generics;
 import java.util.Objects;
 
 public class ExampleTwo {
-    
+
     public static void main(String[] args) {
         AnimalPrinter<Cat> animalPrinter1 = new AnimalPrinter<>(new Cat("Jim", "brown", 2));
         animalPrinter1.print();
         AnimalPrinter<Dog> animalPrinter2 = new AnimalPrinter<>(new Dog("Rocky", "black", 5));
         animalPrinter2.print();
     }
-    
+
     public static class Cat extends Animal {
         public Cat(String name, String color, Integer age) {
             super(name, color, age);
@@ -23,9 +23,7 @@ public class ExampleTwo {
         }
     }
 
-    /**
-     * T can be any class that extend Animal
-     */
+    /** T can be any class that extend Animal */
     public static class AnimalPrinter<T extends Animal> {
         private final T animalData;
 

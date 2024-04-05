@@ -1,6 +1,9 @@
 package designpattern.adapter;
 
 public class MainAfter {
+    /**
+     * Adapter interface
+     */
     interface Shape {
         void draw(int x, int y, int z, int j);
     }

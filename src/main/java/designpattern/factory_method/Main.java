@@ -2,10 +2,16 @@ package designpattern.factory_method;
 
 /** NB: rende più agevole l'eventuale aggiunta di nuovi tipi di ImageReader */
 public class Main {
+    /**
+     * Product interface
+     */
     interface ImageReader {
         DecodedImage getDecodeImage();
     }
 
+    /**
+     * Factory implementation
+     */
     static class DecodedImage {
         private final String image;
 

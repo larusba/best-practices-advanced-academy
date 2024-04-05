@@ -13,5 +13,4 @@ public class MethodObjectOld {
             return primaryBasePrice + secondaryBasePrice + tertiaryBasePrice;
         }
     }
-
 }

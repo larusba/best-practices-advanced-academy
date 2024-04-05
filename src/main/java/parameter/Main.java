@@ -1,13 +1,10 @@
 package parameter;
 
-import java.util.UUID;
-
 public class Main {
 
     public static class TaxCalculator {
-        
-        public static void setupTax() {
-        }
+
+        public static void setupTax() {}
 
         public static double getTax(int index) {
             // Implementation to retrieve tax based on index
@@ -39,10 +36,9 @@ public class Main {
         public static void setPlayerHealth(int playerHealth) {
             System.out.println("Game.setPlayerHealth");
         }
-        
+
         public static void setLevel(int playerHealth) {
             System.out.println("Game.setLevel");
         }
     }
-
 }

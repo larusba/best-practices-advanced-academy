@@ -12,23 +12,24 @@ public class MainOld {
             this.unitPrice = unitPrice;
             this.isLabor = isLabor;
             this.employee = employee;
-            
         }
+
         public int getTotalPrice() {
             return quantity * getUnitPrice();
         }
+
         public int getQuantity() {
             return quantity;
         }
 
         /**
-         * The method depends on isLabor, 
-         * and `employee` makes sense only with isLabor=true
-         * we could create 2 classes starting from an abstract class
+         * The method depends on isLabor, and `employee` makes sense only with isLabor=true we could
+         * create 2 classes starting from an abstract class
          */
         public int getUnitPrice() {
             return (isLabor) ? employee.getRate() : unitPrice;
         }
+
         public Employee getEmployee() {
             return employee;
         }
@@ -36,9 +37,11 @@ public class MainOld {
 
     static class Employee {
         private int rate;
+
         public Employee(int rate) {
             this.rate = rate;
         }
+
         public int getRate() {
             return rate;
         }

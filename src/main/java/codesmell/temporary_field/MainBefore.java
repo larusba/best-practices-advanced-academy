@@ -5,8 +5,8 @@ public class MainBefore {
         private long year;
         private long month;
         private long day;
-        
-        // unused var, except for toString() 
+
+        // unused var, except for toString()
         private String fullDate;
 
         public CustomDateTime(long year, long month, long day) {
@@ -28,11 +28,10 @@ public class MainBefore {
             return day;
         }
 
-        
         public String toOther() {
             return fullDate + ";";
         }
-        
+
         @Override
         public String toString() {
             return fullDate;

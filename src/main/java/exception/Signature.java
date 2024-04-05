@@ -22,13 +22,17 @@ public class Signature {
             }
         }
     }
-
+    
+    
 
     // Poor Practice: Improper Exception Handling
     public static class FileReaderTwo {
 
         // Poor Practice: Non-Descriptive Method Signature
         public String readFile(String path) throws Exception {
+            
+            final var test = 0;
+            
             try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
                 StringBuilder content = new StringBuilder();
                 String line;
@@ -39,5 +43,4 @@ public class Signature {
             }
         }
     }
-
 }

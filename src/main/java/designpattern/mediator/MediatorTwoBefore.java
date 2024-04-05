@@ -24,8 +24,7 @@ public class MediatorTwoBefore {
         private Button button;
         private PowerSupplier powerSupplier;
         private boolean isOn = false;
-
-        // constructor, getters and setters
+        
 
         public void turnOn() {
             powerSupplier.turnOn();

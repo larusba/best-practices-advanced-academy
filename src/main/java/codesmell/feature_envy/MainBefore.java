@@ -6,11 +6,11 @@ public class MainBefore {
         public String getStreetName() {
             return "1 Medison Square";
         }
-        
+
         public String getCity() {
             return "NewYork";
         }
-        
+
         public String getState() {
             return "NY";
         }
@@ -21,7 +21,7 @@ public class MainBefore {
         public String getUserName() {
             return "Ajeje";
         }
-        
+
         /**
          * Feature envy: questo metodo implementa solo metodi riguardanti il PARAMETRO ContactInfo
          * Simile al Middle Man, ma non riguarda i field

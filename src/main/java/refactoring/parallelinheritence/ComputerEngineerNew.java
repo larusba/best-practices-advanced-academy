@@ -4,6 +4,7 @@ public class ComputerEngineerNew implements Engineer {
     private String type;
     private int salary;
     private MileStone mileStone;
+
     public void setType(String type) {
         this.type = type;
     }
@@ -33,7 +34,12 @@ public class ComputerEngineerNew implements Engineer {
 
     @Override
     public String toString() {
-        return "ComputerEngineer [type=" + type + ", salary=" + salary
-               + ", mileStone=" + mileStone + "]";
+        return "ComputerEngineer [type="
+                + type
+                + ", salary="
+                + salary
+                + ", mileStone="
+                + mileStone
+                + "]";
     }
 }
