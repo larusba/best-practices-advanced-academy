@@ -1,10 +1,14 @@
 package designpattern.abstractfactory;
 
 public class Main {
-    // class CPU
+    /**
+     * COMPONENT: Abstract Product
+     */
     abstract static class CPU {}
 
-    // class EmberCPU
+    /**
+     * COMPONENT: Concrete Product
+     */
     static class EmberCPU extends CPU {}
 
     // class EnginolaCPU
@@ -19,7 +23,9 @@ public class Main {
     // class EnginolaMMU
     static class EnginolaMMU extends MMU {}
 
-    // class EmberFactory
+    /**
+     * COMPONENT: Concrete Factory
+     */
     static class EmberToolkit extends AbstractFactory {
         @Override
         public CPU createCPU() {

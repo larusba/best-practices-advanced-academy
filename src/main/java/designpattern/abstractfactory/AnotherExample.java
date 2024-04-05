@@ -5,7 +5,10 @@ package designpattern.abstractfactory;
  * It has more factory methods
  */
 public class AnotherExample {
-    
+
+    /**
+     * COMPONENT: Product Abstract Class
+     */
     abstract static class UrlHandler {
         public static final String KEY_VALUE = "K-V";
     
@@ -29,7 +32,7 @@ public class AnotherExample {
         protected abstract String formatQueryUrl(String index, String type, String id, Object query);
     
         /**
-         * Factory with enums which instantiate the proper class 
+         * COMPONENT: Abstract (Enum) Factory with enums which instantiate the proper class
          */
         enum Version {
             ONE(new One()),
@@ -45,7 +48,10 @@ public class AnotherExample {
                 return handler;
             }
         }
-    
+
+        /**
+         * COMPONENT: Concrete Product
+         */
         static class One extends UrlHandler {
     
             @Override

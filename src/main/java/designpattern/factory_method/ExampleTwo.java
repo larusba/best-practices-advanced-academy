@@ -6,7 +6,7 @@ package designpattern.factory_method;
 public class ExampleTwo {
 
     /**
-     * Product interface
+     * COMPONENT: Product interface
      */
     interface Document {
         void open();
@@ -15,7 +15,7 @@ public class ExampleTwo {
     }
 
     /**
-     * Product implementations
+     * COMPONENT: Product implementations
      */
     public static class TextDocument implements Document {
         @Override
@@ -52,14 +52,14 @@ public class ExampleTwo {
     }
 
     /**
-     * Factory interface
+     * COMPONENT: Factory interface
      */
     interface DocumentFactory {
         Document createDocument();
     }
 
     /**
-     * Factory implementations
+     * COMPONENT: Factory implementations
      */
     public static class TextDocumentFactory implements DocumentFactory {
         @Override

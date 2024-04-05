@@ -2,12 +2,15 @@ package designpattern.adapter;
 
 public class MainAfter {
     /**
-     * Adapter interface
+     * COMPONENT: Adapter interface
      */
     interface Shape {
         void draw(int x, int y, int z, int j);
     }
 
+    /**
+     * COMPONENT: Adaptee component
+     */
     static class Line {
         public void draw(int x1, int y1, int x2, int y2) {
             System.out.println(

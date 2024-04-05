@@ -13,8 +13,13 @@ public class MediatorTwoAfter {
      * NOTA BENE: If we need to add a second power supply in the future, all we have to do is to
      * update Mediator’s logic; Button and Fan classes remain untouched. This example shows how
      * easily we can separate dependent objects and make our system easier to maintain.
+     * 
+     * COMPONENT: Mediator 
      */
     public static class Mediator {
+        /**
+         * COMPONENT: Colleague components
+         */
         private Button button;
         private Fan fan;
         private PowerSupplier powerSupplier;

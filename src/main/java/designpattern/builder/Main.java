@@ -2,6 +2,9 @@ package designpattern.builder;
 
 public class Main {
 
+    /**
+     * COMPONENT: Director
+     */
     public static class Computer {
         /**
          * Instead of a constructor with potentially 10/20 parameters eg: Computer(String hdd,
@@ -33,7 +36,10 @@ public class Main {
             return isBluetoothEnabled;
         }
 
-        /** Inject the Builder */
+        /**
+         * Inject the Builder 
+         * Product class
+         */
         private Computer(Builder builder) {
             this.hdd = builder.hdd;
             this.ram = builder.ram;
@@ -41,7 +47,9 @@ public class Main {
             this.isBluetoothEnabled = builder.isBluetoothEnabled;
         }
 
-        // Builder Class
+        /**
+         * COMPONENT: Builder
+         */
         public static class Builder {
 
             // required parameters

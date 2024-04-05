@@ -26,7 +26,9 @@ public class Food {
     }
 
 
-    // -- Interface
+    /**
+     * COMPONENT: Component (interface and concretes)
+     */
     public interface Pizza {
         String getDescription();
         double cost();
@@ -44,7 +46,9 @@ public class Food {
         }
     }
 
-    // -- Decorator
+    /**
+     * COMPONENT: Decorator (interface and concretes)
+     */
     public abstract static class PizzaDecorator implements Pizza {
         protected Pizza decoratedPizza;
 

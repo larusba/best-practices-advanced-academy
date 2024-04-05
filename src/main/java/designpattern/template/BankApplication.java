@@ -16,10 +16,14 @@ public class BankApplication {
     }
 
     /**
-     * Abstract Template 
+     * COMPONENT: Abstract Template 
      */
     abstract static class LoanProcessor {
-        // Template method defining the loan processing process
+
+        /**
+         * COMPONENT: Template method
+         * Template method defining the loan processing process
+         */
         public final void processLoan() {
             verifyCustomer();
             calculateInterest();

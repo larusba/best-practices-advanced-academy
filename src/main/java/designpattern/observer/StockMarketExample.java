@@ -13,7 +13,7 @@ import java.util.List;
 public class StockMarketExample {
     
     /**
-     * Observer interface
+     * COMPONENT: Observer interface and concrete implementations
      */
     public interface StockObserver {
         void update(String stockSymbol, double stockPrice);
@@ -34,7 +34,7 @@ public class StockMarketExample {
 
 
     /**
-     * Subject component 
+     * COMPONENT: Subject component 
      */
     public interface StockMarket {
         void registerObserver(StockObserver observer);
