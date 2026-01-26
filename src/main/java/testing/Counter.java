@@ -1,6 +1,5 @@
 package testing;
 
-/** TODO - durante la demo usare il refactoring > rename in `Counter` */
 public class Counter {
 
     private final int counter;

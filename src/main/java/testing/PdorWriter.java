@@ -3,7 +3,7 @@ package testing;
 import java.io.StringWriter;
 
 /** Simple class that says "Pdor!". */
-public class Exercise {
+public class PdorWriter {
 
     public static final String PDOR = "Pdor!";
 
