@@ -4,19 +4,38 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * PROBLEMA: Duplicazione della Logica di Iterazione.
+ *
+ * Questa classe viola il principio DRY (Don't Repeat Yourself) perché ripete
+ * la struttura del ciclo (for-each) per ogni diversa operazione che si vuole
+ * eseguire sui prodotti.
+ *
+ * CRITICITÀ:
+ * - Rigidità: Per aggiungere una nuova operazione (es. "salva su DB"), dobbiamo
+ * modificare la classe ProductManager aggiungendo un nuovo metodo e duplicando il ciclo.
+ * - Manutenibilità: Se cambia il modo in cui iteriamo (es. vogliamo farlo in parallelo),
+ * dobbiamo modificare tutti i metodi singolarmente.
+ */
 public class Before {
     public static class ProductManager {
 
         private List<Product> products;
 
-        /** We use 2 similar methods, each cycle the product */
+        /**
+         * CODE SMELL: Metodo specifico hardcoded.
+         * Itera e stampa. Il ciclo è accoppiato all'azione di stampa.
+         */
         public void processProductsPrint() {
             for (Product product : products) {
                 System.out.println(product.getName() + ": $" + product.getPrice());
             }
         }
 
-        /** We use 2 similar methods, each cycle the product */
+        /**
+         * CODE SMELL: Duplicazione del ciclo.
+         * Itera e controlla il prezzo. Stesso ciclo, azione diversa.
+         */
         public void processProductsCheckPrice() {
             for (Product product : products) {
                 if (product.getPrice() > 500) {

@@ -1,5 +1,16 @@
 package codesmell.replace_inheritance_with_delegation;
 
+/**
+ * PROBLEMA: Abuso dell'Ereditarietà (Inheritance Abuse).
+ *
+ * Questo codice viola la logica "IS-A" (È-Un) solo per riutilizzare del codice.
+ *
+ * CRITICITA':
+ * - Errore Semantico: Un'auto NON E' un motore. Un'auto HA un motore.
+ * - Inquinamento dell'API: Estendendo Engine, la classe Car eredita ed espone
+ * tutti i metodi pubblici di Engine (es. setFuel), anche quelli che non dovrebbe esporre.
+ * - Accoppiamento: Car è indissolubilmente legata alla classe Engine a tempo di compilazione.
+ */
 public class MainBefore {
     class Engine {
         private double fuel;
@@ -22,6 +33,11 @@ public class MainBefore {
         }
     }
 
+    /**
+     * CODE SMELL: "Car extends Engine".
+     * L'ereditarietà è usata qui solo come scorciatoia per accedere ai campi fuel/CV,
+     * non perché Car sia un sottotipo di Engine.
+     */
     class Car extends Engine {
         private String brand;
         private String model;

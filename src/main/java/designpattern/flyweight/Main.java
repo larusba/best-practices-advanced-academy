@@ -6,6 +6,18 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Esempio del Design Pattern Flyweight.
+ *
+ * Il Flyweight viene utilizzato per minimizzare l'uso della memoria condividendo
+ * il più possibile dati con oggetti simili. È essenziale quando si devono gestire
+ * grandi quantità di oggetti (es. caratteri in un editor di testo) che condividono
+ * molte proprietà ripetitive (es. font, colore, dimensione).
+ *
+ * Concetti chiave:
+ * - Stato Intrinseco: Dati condivisi e immutabili (memorizzati nel Flyweight).
+ * - Stato Estrinseco: Dati specifici del contesto (passati dall'esterno, non salvati qui).
+ */
 public class Main {
     public enum Color {
         RED,
@@ -21,8 +33,23 @@ public class Main {
         STRIKETHROUGH
     }
 
+    /**
+     * Classe Flyweight Concreta.
+     * Rappresenta lo "Stato Intrinseco" (Intrinsic State) della formattazione del testo.
+     *
+     * CARATTERISTICA CRUCIALE: IMMUTABILITÀ.
+     * Poiché questi oggetti sono condivisi tra molte parti dell'applicazione,
+     * non devono assolutamente poter cambiare stato una volta creati, altrimenti
+     * la modifica si rifletterebbe ovunque quell'oggetto è usato.
+     */
     public static final class FontData {
+        /**
+         * Il "Pool" o Cache dei Flyweight.
+         * Garantisce che esista una sola istanza per ogni combinazione unica di proprietà.
+         * In implementazioni più complesse, questa cache starebbe in una classe "FlyweightFactory".
+         */
         private static final Set<FontData> flyweightData = new HashSet<>();
+        
         private final int pointSize;
         private final String fontFace;
         private final Color color;
@@ -35,22 +62,41 @@ public class Main {
             this.effects = Collections.unmodifiableSet(effects);
         }
 
+        /**
+         * Factory Method (Flyweight Factory).
+         * * Questo è il punto centrale del pattern. Invece di usare 'new' liberamente:
+         * 1. Costruisce un candidato oggetto.
+         * 2. Controlla nella cache se esiste già un oggetto identico (tramite equals).
+         * 3. Se esiste, restituisce il riferimento all'oggetto già in memoria.
+         * 4. Se non esiste, lo aggiunge alla cache e lo restituisce.
+         *
+         * Risultato: Se il documento ha 10.000 parole in "Arial 12 Rosso",
+         * in memoria avremo 1 solo oggetto FontData, non 10.000.
+         *
+         * @return L'istanza univoca (condivisa) per questi dati.
+         */
         public static FontData create(
                 int pointSize, String fontFace, Color color, FontEffect... effects) {
             EnumSet<FontEffect> effectsSet = EnumSet.noneOf(FontEffect.class);
             effectsSet.addAll(Arrays.asList(effects));
-            // We are unconcerned with object creation cost, we are reducing overall memory
-            // consumption
-
-            /** FontData has a cache mechanism via Set */
+            
+            // Creiamo un oggetto temporaneo solo per verificare se esiste nella cache
             FontData data = new FontData(pointSize, fontFace, color, effectsSet);
-            // add to cache
+            
+            // Tentiamo di aggiungere: se esiste già, non fa nulla (grazie a equals/hashCode)
             flyweightData.add(data);
-            // return the single immutable copy with the given values
+            
+            // Recuperiamo l'istanza "canonica" presente nel set.
+            // Nota: Set non ha un metodo 'get', quindi usiamo lo stream per trovare
+            // l'oggetto che è equals() al nostro dato temporaneo.
             return flyweightData.stream().filter(data::equals).findFirst().get();
         }
 
-        /** To check if element is not in the cache */
+        /**
+         * Equals e HashCode sono FONDAMENTALI nel Flyweight.
+         * Servono alla cache (HashSet) per identificare se un oggetto con
+         * le stesse proprietà esiste già, evitando duplicati.
+         */
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;

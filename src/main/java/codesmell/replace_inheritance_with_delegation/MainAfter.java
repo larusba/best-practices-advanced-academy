@@ -1,5 +1,16 @@
 package codesmell.replace_inheritance_with_delegation;
 
+/**
+ * SOLUZIONE: Refactoring tramite Delega (Composition over Inheritance).
+ *
+ * Abbiamo trasformato la relazione da Ereditarietà (IS-A) a Composizione (HAS-A).
+ * La classe Car ora contiene un'istanza di Engine e "delega" a essa il lavoro.
+ *
+ * VANTAGGI:
+ * - Modellazione Corretta: Rispetta la realtà (l'auto possiede il motore).
+ * - Incapsulamento: Car può decidere quali metodi di Engine esporre e quali nascondere.
+ * - Flessibilità: In futuro potremmo cambiare il motore a runtime (cosa impossibile con l'ereditarietà).
+ */
 public class MainAfter {
     class Engine {
         private double fuel;
@@ -26,7 +37,10 @@ public class MainAfter {
         private String brand;
         private String model;
 
-        /** Composition over inheritance Car HAS AN Engine */
+        /**
+         * COMPOSITION: Car "HAS A" (possiede un) Engine.
+         * Engine è ora un campo privato, non un genitore.
+         */
         protected Engine engine;
 
         public Car() {
@@ -34,6 +48,7 @@ public class MainAfter {
         }
 
         public String getName() {
+            // DELEGA: Chiediamo al motore i suoi dati, invece di ereditarli.
             return brand + " " + model + " (" + engine.getCV() + "CV)";
         }
 

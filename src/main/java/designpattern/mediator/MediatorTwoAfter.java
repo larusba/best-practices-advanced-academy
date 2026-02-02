@@ -1,24 +1,30 @@
 package designpattern.mediator;
 
 /**
- * Button, Fan, and PowerSupplier classes are tightly coupled. 
- * The Button operates directly on the Fan and the Fan interacts with both Button and PowerSupplier.
+ * ESEMPIO "AFTER": Refactoring con Design Pattern Mediator.
  *
- * It would be hard to reuse the Button class in other modules. Also, if we need to add a second
- * power supply into our system, then we would have to modify the Fan class’ logic.
+ * Obiettivo del refactoring:
+ * - Disaccoppiare Button, Fan e PowerSupplier.
+ * - Centralizzare la logica di orchestrazione (Flusso di controllo) nel Mediator.
+ *
+ * VANTAGGI DIDATTICI:
+ * - I componenti (Colleagues) non si conoscono tra loro (parlano solo col Mediator).
+ * - Button diventa riusabile: sa solo che deve dire "sono stato premuto" a qualcuno.
+ * - Estendibilità: Se aggiungiamo un secondo alimentatore, modificheremo solo il Mediator,
+ * senza toccare il codice di Fan o Button (Open/Closed Principle).
  */
 public class MediatorTwoAfter {
 
     /**
-     * NOTA BENE: If we need to add a second power supply in the future, all we have to do is to
-     * update Mediator’s logic; Button and Fan classes remain untouched. This example shows how
-     * easily we can separate dependent objects and make our system easier to maintain.
-     * 
-     * COMPONENT: Mediator 
+     * Il MEDIATOR Concreto.
+     *
+     * Agisce da hub centrale. Conosce tutti i componenti e decide come coordinarli.
+     * Trasforma le dipendenze molti-a-molti in dipendenze uno-a-molti.
      */
     public static class Mediator {
         /**
-         * COMPONENT: Colleague components
+         * Riferimenti ai "Colleagues".
+         * Il Mediator è l'unico posto dove questi oggetti coesistono.
          */
         private Button button;
         private Fan fan;
@@ -26,6 +32,10 @@ public class MediatorTwoAfter {
 
         // constructor, getters and setters
 
+        /**
+         * Logica centralizzata.
+         * Il Mediator riceve l'input dal Button e orchestra Fan.
+         */
         public void press() {
             if (fan.isOn()) {
                 fan.turnOff();
@@ -34,6 +44,10 @@ public class MediatorTwoAfter {
             }
         }
 
+        /**
+         * Logica centralizzata.
+         * Il Mediator riceve l'input dal Fan e orchestra PowerSupplier.
+         */
         public void start() {
             powerSupplier.turnOn();
         }
@@ -43,8 +57,14 @@ public class MediatorTwoAfter {
         }
     }
 
+    /**
+     * COLLEAGUE 1: Button.
+     *
+     * Ora è un componente "stupido" (in senso buono).
+     * Non sa cosa succede quando viene premuto, delega tutto al Mediator.
+     */
     public static class Button {
-        // NB: Mediator instead of Fun
+        // NB: Dipende dall'interfaccia Mediator, non da classi concrete come Fan.
         private Mediator mediator;
 
         // constructor, getters and setters
@@ -54,20 +74,28 @@ public class MediatorTwoAfter {
         }
     }
 
+    /**
+     * COLLEAGUE 2: Fan.
+     *
+     * Non controlla più direttamente il PowerSupplier.
+     * Notifica il Mediator quando cambia stato (start/stop).
+     */
     public static class Fan {
-        // NB: Mediator instead of Button and PowerSupplier
+        // NB: Mediator sostituisce le dipendenze dirette verso Button e PowerSupplier.
         private Mediator mediator;
         private boolean isOn = false;
 
         // constructor, getters and setters
 
         public void turnOn() {
+            // Notifica il mediatore che serve energia
             mediator.start();
             isOn = true;
         }
 
         public void turnOff() {
             isOn = false;
+            // Notifica il mediatore di spegnere l'energia
             mediator.stop();
         }
 
@@ -76,6 +104,11 @@ public class MediatorTwoAfter {
         }
     }
 
+    /**
+     * COLLEAGUE 3: PowerSupplier.
+     *
+     * Rimane un componente passivo, controllato dal Mediator.
+     */
     public static class PowerSupplier {
         public void turnOn() {
             // implementation

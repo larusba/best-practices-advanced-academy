@@ -1,7 +1,20 @@
 package food;
 
+/**
+ * PROBLEMA: Tight Coupling (Accoppiamento Stretto) e Hard Dependencies.
+ *
+ * In questo approccio "Before", la classe Processor viola il principio di
+ * Inversione del Controllo (IoC). Essa è responsabile non solo della logica
+ * di business, ma anche del ciclo di vita delle sue dipendenze.
+ *
+ * CRITICITÀ:
+ * - Difficile da testare: Non possiamo scrivere uno Unit Test per Processor
+ * senza coinvolgere anche il DatabaseManager reale (che stampa o scrive su DB).
+ * Non possiamo iniettare "Mock" o "Stub".
+ * - Rigidità: Se volessimo cambiare il Logger con un "FileLogger", dovremmo
+ * modificare il codice sorgente di Processor.
+ */
 public class RavioliBefore {
-    // todo
 
     // Validator.java
     public static class Validator {
@@ -61,6 +74,13 @@ public class RavioliBefore {
         private Logger logger;
         private DatabaseManager dbManager;
 
+        /**
+         * CODE SMELL: "New" is Glue (La parola chiave 'new' è colla).
+         *
+         * Istanziare le dipendenze direttamente nel costruttore "incolla"
+         * questa classe alle implementazioni specifiche.
+         * Processor è strettamente accoppiato a Validator, Logger e DatabaseManager.
+         */
         public Processor() {
             this.validator = new Validator();
             this.logger = new Logger();
@@ -103,6 +123,7 @@ public class RavioliBefore {
     // Main.java (for demonstration)
     public class Main {
         public static void main(String[] args) {
+            // Il client non ha controllo su come Processor è configurato.
             Processor processor = new Processor();
             String data = "Some data";
             String username = "user";

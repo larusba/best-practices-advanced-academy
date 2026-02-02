@@ -5,17 +5,34 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 1. Create an "intermediary" that decouples "senders" from "receivers" 2. Producers are coupled
- * only to the Mediator 3. Consumers are coupled only to the Mediator 4. The Mediator arbitrates the
- * storing and retrieving of messages
+ * Esempio del Design Pattern Mediator applicato in un contesto di concorrenza.
+ *
+ * Il Mediator agisce come "Hub" centrale per la comunicazione, disaccoppiando
+ * completamente i mittenti (Producers) dai destinatari (Consumers).
+ *
+ * Concetti chiave:
+ * - Disaccoppiamento: I Producer non sanno dell'esistenza dei Consumer e viceversa.
+ * - Centralizzazione: La logica complessa di sincronizzazione (wait/notify) è
+ * incapsulata interamente nel Mediator, non sparpagliata nei thread.
  */
 public class MediatorExampleOne {
-    // 1. The "intermediary"
+
+    /**
+     * Il Mediator Concreto.
+     *
+     * Gestisce lo stato condiviso e arbitra lo scambio di messaggi.
+     * Implementa un buffer di dimensione 1 (single slot) thread-safe.
+     */
     static class Mediator {
-        // 4. The Mediator arbitrates
         private boolean slotFull = false;
         private int number;
 
+        /**
+         * Metodo usato dai Producer per inviare dati.
+         *
+         * Se lo slot è pieno, mette il thread in attesa (wait).
+         * Quando lo slot si libera, salva il dato e notifica i thread in attesa.
+         */
         public synchronized void storeMessage(int num) {
             // no room for another message
             while (slotFull == true) {
@@ -30,6 +47,12 @@ public class MediatorExampleOne {
             notifyAll();
         }
 
+        /**
+         * Metodo usato dai Consumer per leggere dati.
+         *
+         * Se lo slot è vuoto, mette il thread in attesa.
+         * Quando arriva un dato, lo preleva, libera lo slot e notifica i Producer.
+         */
         public synchronized int retrieveMessage() {
             // no message to retrieve
             while (slotFull == false) {
@@ -45,8 +68,13 @@ public class MediatorExampleOne {
         }
     }
 
+    /**
+     * Colleague 1: Producer.
+     *
+     * Genera dati e li invia al Mediator.
+     * Non ha riferimenti ai Consumer, conosce solo l'interfaccia del Mediator.
+     */
     static class Producer implements Runnable {
-        // 2. Producers are coupled only to the Mediator
         private Mediator med;
         private int id;
         private static int num = 1;
@@ -66,8 +94,13 @@ public class MediatorExampleOne {
         }
     }
 
+    /**
+     * Colleague 2: Consumer.
+     *
+     * Richiede dati al Mediator.
+     * Ignora chi o quanti Producer stiano generando i dati.
+     */
     static class Consumer implements Runnable {
-        // 3. Consumers are coupled only to the Mediator
         private final Mediator med;
         private final int id;
         private static int num = 1;
@@ -85,14 +118,21 @@ public class MediatorExampleOne {
         }
     }
 
+    /**
+     * Classe Client.
+     *
+     * Configura la rete di oggetti: crea il Mediator e collega i Colleague (thread).
+     */
     public static class MediatorDemo {
         public static void main(String[] args) {
             List<Thread> producerList = new ArrayList<>();
             Scanner scanner = new Scanner(System.in);
             System.out.println("Press ENTER for exit");
 
-            // create a Mediator which handle consumer and producer
+            // Istanzia il Mediator che gestirà il traffico tra thread
             Mediator mb = new Mediator();
+
+            // I thread ricevono solo il riferimento al Mediator
             producerList.add(new Thread(new Producer(mb)));
             producerList.add(new Thread(new Producer(mb)));
             producerList.add(new Thread(new Consumer(mb)));
@@ -103,12 +143,18 @@ public class MediatorExampleOne {
             for (Thread p : producerList) {
                 p.start();
             }
+
             boolean stop = false;
             String exit = scanner.nextLine();
             while (!stop) {
                 if (exit.equals("")) {
                     stop = true;
                     for (Thread p : producerList) {
+                        // AVVISO DIDATTICO:
+                        // Thread.stop() è deprecato e insicuro (unsafe).
+                        // In codice di produzione bisognerebbe usare un flag volatile
+                        // o Thread.interrupt() per una chiusura pulita.
+                        // Qui è usato solo per semplicità dell'esempio.
                         //noinspection deprecation
                         p.stop();
                     }

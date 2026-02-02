@@ -1,7 +1,19 @@
 package food;
 
+/**
+ * SOLUZIONE: Dependency Injection (Iniezione delle Dipendenze).
+ *
+ * Abbiamo applicato il pattern dell'Inversione del Controllo (IoC).
+ * DataProcessor non crea più le sue dipendenze, ma le *richiede* al costruttore.
+ *
+ * VANTAGGI:
+ * - Testabilità: Possiamo passare un "MockLogger" o "MockDatabase" nei test
+ * per verificare la logica di DataProcessor senza effetti collaterali.
+ * - Flessibilità: Possiamo cambiare l'implementazione del DatabaseManager nel Main
+ * senza toccare una riga di codice di DataProcessor.
+ * - Separation of Concerns: DataProcessor si occupa di logica, Main si occupa di "assemblaggio".
+ */
 public class RavioliAfter {
-    // todo
 
     // DataProcessor.java
     public static class DataProcessor {
@@ -9,6 +21,12 @@ public class RavioliAfter {
         private Logger logger;
         private DatabaseManager dbManager;
 
+        /**
+         * BEST PRACTICE: Constructor Injection.
+         *
+         * Le dipendenze sono dichiarate esplicitamente come parametri.
+         * Questo rende chiaro di cosa ha bisogno la classe per funzionare.
+         */
         public DataProcessor(Validator validator, Logger logger, DatabaseManager dbManager) {
             this.validator = validator;
             this.logger = logger;
@@ -103,11 +121,17 @@ public class RavioliAfter {
     // Main.java (for demonstration)
     public static class Main {
         public static void main(String[] args) {
+            // Wiring (Cablaggio):
+            // Creiamo le istanze delle dipendenze.
             Validator validator = new Validator();
             Logger logger = new Logger();
             DatabaseManager dbManager = new DatabaseManager();
 
+            // Iniettiamo le dipendenze nel processore.
+            // Questo è il concetto di "Ravioli" fatto bene: piccoli oggetti coesi
+            // che vengono assemblati insieme dall'esterno.
             DataProcessor processor = new DataProcessor(validator, logger, dbManager);
+            
             String data = "Some data";
             String username = "user";
             String password = "password";

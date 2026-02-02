@@ -4,21 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Mercato azionario
- * Suppose we want to create a stock market monitoring system where 
- * `investors can subscribe to receive stock price updates` 
- * for specific companies. 
- * 
+ * ESEMPIO 2: Mercato Azionario (Push Model).
+ *
+ * A differenza dell'esempio precedente, qui i dati non vengono "tirati" (get) dall'Observer,
+ * ma vengono "spinti" (Push) dal Subject tramite i parametri del metodo update().
  */
 public class StockMarketExample {
     
     /**
-     * COMPONENT: Observer interface and concrete implementations
+     * COMPONENT: Observer Interface.
+     * I sottoscrittori (Investitori) devono implementare questo metodo.
      */
     public interface StockObserver {
+        // PUSH MODEL: I dati (symbol, price) sono passati direttamente.
         void update(String stockSymbol, double stockPrice);
     }
 
+    /**
+     * Concrete Observer.
+     */
     public static class Investor implements StockObserver {
         private String name;
 
@@ -34,7 +38,8 @@ public class StockMarketExample {
 
 
     /**
-     * COMPONENT: Subject component 
+     * COMPONENT: Subject Interface.
+     * Definisce le operazioni di gestione delle sottoscrizioni.
      */
     public interface StockMarket {
         void registerObserver(StockObserver observer);
@@ -42,6 +47,9 @@ public class StockMarketExample {
         void notifyObservers(String stockSymbol, double stockPrice);
     }
 
+    /**
+     * Concrete Subject.
+     */
     public static class StockMarketImpl implements StockMarket {
         private List<StockObserver> observers = new ArrayList<>();
 
@@ -58,6 +66,7 @@ public class StockMarketExample {
         @Override
         public void notifyObservers(String stockSymbol, double stockPrice) {
             for (StockObserver observer : observers) {
+                // Notifica push a tutti gli iscritti
                 observer.update(stockSymbol, stockPrice);
             }
         }
@@ -72,15 +81,18 @@ public class StockMarketExample {
             StockObserver investor1 = new Investor("Alice");
             StockObserver investor2 = new Investor("Bob");
 
+            // Registrazione dinamica
             stockMarket.registerObserver(investor1);
             stockMarket.registerObserver(investor2);
 
-            stockMarket.notifyObservers("INFY", 1250.0); // Both investors receive updates
-            stockMarket.notifyObservers("TCS", 2500.0); // Both investors receive updates
+            System.out.println("--- First Update ---");
+            stockMarket.notifyObservers("INFY", 1250.0); // Tutti ricevono notifica
 
+            System.out.println("--- Investor leaves ---");
+            // Disiscrizione (Unsubscribe)
             stockMarket.removeObserver(investor1);
 
-            stockMarket.notifyObservers("WIPRO", 700.0); // Only investor2 receives the update
+            stockMarket.notifyObservers("WIPRO", 700.0); // Solo Bob riceve notifica
         }
     }
 }

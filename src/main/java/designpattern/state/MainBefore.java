@@ -4,9 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * PROBLEMA: Macchina a Stati finiti gestita con condizionali.
+ *
+ * Qui lo stato è rappresentato da un semplice intero (0, 1, 2, 3).
+ *
+ * CRITICITÀ:
+ * - Violazione Open/Closed Principle: Per aggiungere una nuova velocità (es. "Turbo"),
+ * dobbiamo modificare il metodo pull() e rischiare di rompere la logica esistente.
+ * - Codice Spaghetti: Se le operazioni per ogni stato fossero complesse,
+ * questo metodo diventerebbe enorme e illeggibile.
+ * - Transizioni implicite: La logica di passaggio da uno stato all'altro è sepolta negli if/else.
+ */
 public class MainBefore {
 
     static class CeilingFanPullChain {
+        // CODE SMELL: Uso di interi per rappresentare stati complessi.
         private int currentState;
 
         public CeilingFanPullChain() {
@@ -15,6 +28,8 @@ public class MainBefore {
 
         /** Not good: bad "case" statement */
         public void pull() {
+            // CODE SMELL: Catena condizionale rigida.
+            // Il contesto deve conoscere tutti gli stati possibili e le regole di transizione.
             if (currentState == 0) {
                 currentState = 1;
                 System.out.println("low speed");
