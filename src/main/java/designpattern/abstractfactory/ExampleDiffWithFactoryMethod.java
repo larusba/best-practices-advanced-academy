@@ -33,6 +33,6 @@ public class ExampleDiffWithFactoryMethod {
         people.getSpeed();
 
         // we can also do
-        PeopleType african = PeopleType.valueOf("ASIAN");
+        PeopleType african = PeopleType.valueOf("AFRICAN");
     }
 }

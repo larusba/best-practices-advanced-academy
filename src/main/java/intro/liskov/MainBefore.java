@@ -2,9 +2,14 @@ package intro.liskov;
 
 /**
  * both Car and Motorcycle are subclasses of Vehicle, and they both override the startEngine()
- * method to provide their specific implementation. However, this implementation may violate the
+ * method to provide their specific implementation. 
+ * 
+ * However, this implementation may violate the 
  * Liskov Substitution Principle if the superclass Vehicle makes assumptions about the behavior of
  * all vehicles.
+ * 
+ * What happens if we add a bicycle? In this case, the bicycle may not have an engine to start,
+ * which could lead to unexpected behavior if the Vehicle class assumes all vehicles have engines.
  */
 public class MainBefore {
     // Base class representing a vehicle

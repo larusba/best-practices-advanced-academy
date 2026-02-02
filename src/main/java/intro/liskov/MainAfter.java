@@ -9,64 +9,83 @@ package intro.liskov;
  * change the expected behavior of the program.
  */
 public class MainAfter {
-    // Base class representing a vehicle
-    static class Vehicle {
-        private String fuelType;
 
-        public Vehicle(String fuelType) {
-            this.fuelType = fuelType;
-        }
-
-        // Method to start the engine of the vehicle
-        public void startEngine() {
-            System.out.println("Starting engine of the vehicle...");
-        }
-
-        // Method to get the fuel type of the vehicle
-        public String getFuelType() {
-            return fuelType;
+    // 1. Classe Base GENERICA
+    // Definisce solo ciò che ogni veicolo può fare: muoversi.
+    static abstract class Vehicle {
+        public void move() {
+            System.out.println("The vehicle is moving...");
         }
     }
 
-    // Car class representing a car, a type of vehicle
-    static class Car extends Vehicle {
+    // 2. Classe Intermedia per VEICOLI A MOTORE
+    // Qui introduciamo il concetto di motore e carburante.
+    static abstract class MotorVehicle extends Vehicle {
+        private String fuelType;
+
+        public MotorVehicle(String fuelType) {
+            this.fuelType = fuelType;
+        }
+
+        public void startEngine() {
+            System.out.println("Starting engine (" + fuelType + ")...");
+        }
+    }
+
+    // 3. Classe Intermedia per VEICOLI SENZA MOTORE (Opzionale, per chiarezza)
+    static abstract class ManualVehicle extends Vehicle {
+        public void pedaling() {
+            System.out.println("Pedaling...");
+        }
+    }
+
+    // --- IMPLEMENTAZIONI CONCRETE ---
+
+    // Car è un MotorVehicle -> Ha il metodo startEngine
+    static class Car extends MotorVehicle {
         public Car(String fuelType) {
             super(fuelType);
         }
 
-        // Override startEngine method to implement car-specific behavior
         @Override
         public void startEngine() {
-            System.out.println("Starting car engine...");
+            System.out.println("Vroom! Car engine started with " + super.fuelType);
         }
     }
 
-    // Motorcycle class representing a motorcycle, a type of vehicle
-    static class Motorcycle extends Vehicle {
-        public Motorcycle(String fuelType) {
-            super(fuelType);
-        }
-
-        // Override startEngine method to implement motorcycle-specific behavior
+    // Bicycle è un ManualVehicle (o direttamente Vehicle) -> NON HA startEngine
+    static class Bicycle extends ManualVehicle {
         @Override
-        public void startEngine() {
-            System.out.println("Starting motorcycle engine...");
+        public void move() {
+            System.out.println("The bicycle is moving silently.");
         }
     }
 
+    // --- MAIN ---
+    
     public static class Main {
         public static void main(String[] args) {
-            // Creating a Car object
-            Vehicle car = new Car("Gasoline");
+            
+            // Caso 1: Trattiamo tutto come Veicolo generico
+            Vehicle myBike = new Bicycle();
+            Vehicle myCar = new Car("Diesel");
 
-            // Starting the engine of the car
-            car.startEngine(); // Prints "Starting car engine..."
+            myBike.move(); // Ok
+            myCar.move();  // Ok
+            
+            // myBike.startEngine(); // ERRORE DI COMPILAZIONE! 
+            // Il compilatore ci impedisce di chiamare startEngine su un Vehicle generico.
+            // LSP è salvo: non possiamo chiamare un metodo che non esiste per tutti.
 
-            // Creating a Motorcycle object
-            Vehicle motorcycle = new Motorcycle("Gasoline");
+            // Caso 2: Usiamo la classe specifica per i motori
+            MotorVehicle myMoto = new Car("Gasoline");
+            startTrip(myMoto); // Funziona solo con veicoli a motore
+        }
 
-            // Starting the engine of the motorcycle
-            motorcycle.startEngine(); // Prints "Starting motorcycle engine..."
+        // Questo metodo accetta solo veicoli che rispettano il contratto "hanno un motore"
+        public static void startTrip(MotorVehicle v) {
+            v.startEngine();
+            v.move();
         }
     }
 }

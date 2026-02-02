@@ -11,16 +11,20 @@ import java.util.List;
  * Now, let's refactor the code to improve cohesion and reduce coupling by separating file
  * operations and data processing into distinct classes.
  *
- * <p>In this refactoring:
+ * In this refactoring:
  *
- * <p>FileDataReader is responsible for reading data from a file, improving cohesion by
- * encapsulating file-related operations. DataProcessor is responsible for processing and printing
- * data, further improving cohesion by focusing on data-related operations. FileProcessingApp
- * demonstrates how the two classes can be used independently, reducing coupling as they are no
+ * - FileDataReader is responsible for reading data from a file, improving cohesion by
+ * encapsulating file-related operations. 
+ * 
+ * - DataProcessor is responsible for processing and printing
+ * data, further improving cohesion by focusing on data-related operations. 
+ * 
+ * 
+ * FileProcessingApp demonstrates how the two classes can be used independently, reducing coupling as they are no
  * longer tightly integrated into a single class. This refactoring promotes a more modular and
  * maintainable design by adhering to the principles of high cohesion and low coupling.
  *
- * <p>This refactoring promotes a more modular and maintainable design by adhering to the principles
+ * <p>This refactoring promotes a MORE MODULAR AND MAINAINABLE design by adhering to the principles
  * of high cohesion and low coupling.
  */
 public class ExampleCouplingCohesionAfter {

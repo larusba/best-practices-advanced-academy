@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 class CounterTest {
     
     /**
+     * SBAGLIATI
+     * 
      * Test wrongly implemented
      * just to see the error handling
      */
@@ -81,6 +83,8 @@ class CounterTest {
     
     
     /**
+     * CORRETTI
+     * 
      * Test rightly implemented and speaking
      */
     @Test

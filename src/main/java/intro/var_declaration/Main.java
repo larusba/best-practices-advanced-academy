@@ -2,6 +2,10 @@ package intro.var_declaration;
 
 import java.util.UUID;
 
+/**
+ * Main class demonstrating the use of different computer implementations.
+ * It's better to program against interfaces rather than implementations.
+ */
 public class Main {
 
     interface IComputer {

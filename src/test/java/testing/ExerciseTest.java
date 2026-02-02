@@ -8,13 +8,11 @@ public class ExerciseTest {
     /**
      * EX 1)
      * 
-     * Verifica che, DATO un oggetto `StringWriter writer = new StringWriter()`
+     * Verifica che Pdor.repeat(1) ritorni "Pdor!"
      * 
      * SE eseguo {@link Exercise#sayPdor(StringWriter)} 
      * 
      * ALLORA viene stampata la stringa "Pdor!"
-     * 
-     * NB: utilizzando {@link org.junit.jupiter.api.Assertions#assertEquals}
      */
     @Test
     public void testSayPdor() {
@@ -29,8 +27,7 @@ public class ExerciseTest {
      * 
      * EX 2)
      * 
-     * Verifica che, DATO un oggetto `StringWriter writer = new StringWriter()`
-     * e chiamato il metodo setTimes(5)
+     * Verifica che Pdor.repeat(5) ritorni "Pdor!" ripetuta 5 volte
      *  
      *  SE eseguo {@link Exercise#sayPdor(StringWriter)}
      * 
