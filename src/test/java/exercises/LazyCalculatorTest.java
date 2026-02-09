@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * - check if there are false positives / negatives
  * - add possible additional tests
  */
-class ExerciseBeforeTest {
+class LazyCalculatorTest {
 
     @Test
     void testDivideByZeroWithErrMsg() {

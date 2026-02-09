@@ -7,6 +7,11 @@ package designpattern.abstract_factory;
  * - Prima (ExampleDiffWithFactoryMethod): La logica era scritta direttamente dentro l'Enum.
  * - Qui: L'Enum funge solo da "Container". Le implementazioni reali sono delegate
  * a classi separate (European, African, Asian) che estendono una classe base.
+ * 
+ *  QUAL È MIGLIORE? Dipende, dalla complessità della logica.
+ *      - Se `European()` etc sono molto complesse --> Abstract
+ *      - Se sono molto semplici --> Method
+ *      - NB: non c'è una sola soluzione che vada bene, è pure soggettivo 
  *
  * VANTAGGI:
  * - Separation of Concerns: L'Enum non contiene logica di business complessa.

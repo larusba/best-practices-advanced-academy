@@ -29,7 +29,7 @@ public class MainBefore {
         }
 
         public void sendWarningMessage() {
-            if (amount <= 500) {
+            if (amount < 500) {
                 System.out.println("amount should be over 500");
             }
         }
