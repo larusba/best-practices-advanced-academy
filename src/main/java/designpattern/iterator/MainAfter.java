@@ -97,7 +97,7 @@ public class MainAfter {
              * Dimostrazione della potenza del pattern: possiamo scorrere la collezione
              * con due puntatori diversi contemporaneamente (utile es. per algoritmi di confronto).
              */
-            for (firstItr.first(), secondItr.first();
+            for (firstItr.first(); secondItr.first();
                     !firstItr.isDone();
                     firstItr.next(), secondItr.next()) {
                 System.out.print(firstItr.currentValue() + " " + secondItr.currentValue() + "  ");

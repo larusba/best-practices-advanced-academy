@@ -84,7 +84,4 @@ public class Exercise4Before {
             warehouse.processOrder(order1);
         }
     }
-
-
-
 }

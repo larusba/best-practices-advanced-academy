@@ -54,7 +54,7 @@ public class After {
                 product -> System.out.println(product.getName() + ": $" + product.getPrice()));
 
         // Caso 2: Passiamo un comportamento di verifica prezzo
-        // Non abbiamo dovuto modificare ProductManager per supportare questa nuova logica!
+        // Non abbiamo dovuto modificare ProductManager per supportare questa nuova logica
         productManager.processProducts(
                 product -> {
                     if (product.getPrice() > 500) {

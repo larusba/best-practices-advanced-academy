@@ -2,13 +2,34 @@ package designpattern.composite;
 
 import java.util.ArrayList;
 
+/**
+ * Esempio di applicazione corretta del Composite Design Pattern.
+ *
+ * SOLUZIONE:
+ * Il pattern Composite permette di comporre oggetti in strutture ad albero per rappresentare
+ * gerarchie "parte-tutto". Consente ai client di trattare oggetti singoli (File)
+ * e composizioni di oggetti (Directory) in modo uniforme tramite un'interfaccia comune.
+ *
+ * Componenti:
+ * - Component: AbstractFile (Interfaccia comune).
+ * - Leaf: File (Oggetto base, senza figli).
+ * - Composite: Directory (Contenitore, ha figli e delega operazioni).
+ */
 public class MainAfter {
-    /** Define a "lowest common denominator" */
+    /**
+     * COMPONENT: Interfaccia comune ("Lowest Common Denominator").
+     *
+     * Definisce il contratto che sia i file singoli che le cartelle devono rispettare.
+     * Grazie a questo, la Directory non deve sapere cosa contiene esattamente.
+     */
     interface AbstractFile {
         void ls();
     }
 
-    /** File implements the "lowest common denominator" */
+    /**
+     * LEAF (Foglia): Implementa l'interfaccia Component.
+     * Rappresenta l'oggetto indivisibile. Esegue l'operazione effettiva.
+     */
     static class File implements AbstractFile {
         private final String name;
 
@@ -21,7 +42,10 @@ public class MainAfter {
         }
     }
 
-    /** Directory implements the "lowest common denominator" */
+    /**
+     * COMPOSITE: Implementa l'interfaccia Component e contiene figli Component.
+     * Il suo compito principale e' delegare il lavoro ai suoi sotto-elementi.
+     */
     static class Directory implements AbstractFile {
         private String name;
         private ArrayList includedFiles = new ArrayList();
@@ -34,6 +58,13 @@ public class MainAfter {
             includedFiles.add(obj);
         }
 
+        /**
+         * Implementazione ricorsiva tramite polimorfismo.
+         *
+         * Non c'e' piu' bisogno di controllare con instanceof o getClass().
+         * Chiamiamo semplicemente obj.ls() e Java invochera' il metodo corretto
+         * a seconda che l'oggetto sia un File o una Directory.
+         */
         public void ls() {
             System.out.println(CompositeDemo.compositeBuilder + name);
             CompositeDemo.compositeBuilder.append("   ");

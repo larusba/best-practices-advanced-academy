@@ -1,7 +1,11 @@
 package exercises;
 
 /**
- * TODO
+ * Adapter Pattern, 
+ * creando un'interfaccia comune (DatabaseAdapter) che "adatta" e uniforma classi con metodi incompatibili 
+ * (connectMySQL vs connectPostgreSQL).
+ * Questo permette al client di interagire con database diversi usando lo stesso codice generico, 
+ * senza preoccuparsi delle differenze specifiche di implementazione.
  */
 public class Exercise3After {
     // -- MySQL 

@@ -125,7 +125,7 @@ public class MediatorExampleOne {
      */
     public static class MediatorDemo {
         public static void main(String[] args) {
-            List<Thread> producerList = new ArrayList<>();
+            List<Thread> threadList = new ArrayList<>();
             Scanner scanner = new Scanner(System.in);
             System.out.println("Press ENTER for exit");
 
@@ -133,14 +133,14 @@ public class MediatorExampleOne {
             Mediator mb = new Mediator();
 
             // I thread ricevono solo il riferimento al Mediator
-            producerList.add(new Thread(new Producer(mb)));
-            producerList.add(new Thread(new Producer(mb)));
-            producerList.add(new Thread(new Consumer(mb)));
-            producerList.add(new Thread(new Consumer(mb)));
-            producerList.add(new Thread(new Consumer(mb)));
-            producerList.add(new Thread(new Consumer(mb)));
+            threadList.add(new Thread(new Producer(mb)));
+            threadList.add(new Thread(new Producer(mb)));
+            threadList.add(new Thread(new Consumer(mb)));
+            threadList.add(new Thread(new Consumer(mb)));
+            threadList.add(new Thread(new Consumer(mb)));
+            threadList.add(new Thread(new Consumer(mb)));
 
-            for (Thread p : producerList) {
+            for (Thread p : threadList) {
                 p.start();
             }
 
@@ -149,7 +149,7 @@ public class MediatorExampleOne {
             while (!stop) {
                 if (exit.equals("")) {
                     stop = true;
-                    for (Thread p : producerList) {
+                    for (Thread p : threadList) {
                         // AVVISO DIDATTICO:
                         // Thread.stop() è deprecato e insicuro (unsafe).
                         // In codice di produzione bisognerebbe usare un flag volatile

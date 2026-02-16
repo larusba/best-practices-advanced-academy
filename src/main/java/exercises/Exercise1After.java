@@ -1,7 +1,7 @@
 package exercises;
 
 /**
- * TODO
+ * Factory method
  */
 public class Exercise1After {
     enum VehicleType {

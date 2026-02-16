@@ -1,7 +1,12 @@
 package exercises;
 
 /**
- * TODO
+ * Dependency Injection (tramite costruttore), 
+ * rimuovendo l'istanziazione diretta (new) della dipendenza all'interno della classe Order (Inversion of Control).
+ * Questo riduce il Coupling (accoppiamento), 
+ * poiché Order non è più responsabile della creazione del PaymentProcessor, 
+ * vedi: `PaymentProcessor paymentProcessor = new PaymentProcessor();`
+ * ma lo riceve già pronto dall'esterno.
  */
 public class Exercise2After {
     public static class Order {

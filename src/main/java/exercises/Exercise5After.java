@@ -2,7 +2,11 @@ package exercises;
 
 
 /**
- * TODO
+ * Decorator Pattern, 
+ * che permette di aggiungere dinamicamente nuove funzionalità (come il costo per la confezione regalo o la spedizione) 
+ * a un oggetto esistente senza modificarne la struttura o usare l'ereditarietà statica.
+ * Nel codice "After", l'oggetto SimpleProduct viene "avvolto" (wrapped) all'interno di classi decoratrici (GiftWrap, ExpeditedShipping) 
+ * che implementano la stessa interfaccia comune, sommando i prezzi e concatenando le descrizioni a runtime.
  */
 public class Exercise5After {
     /**

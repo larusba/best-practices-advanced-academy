@@ -2,6 +2,19 @@ package designpattern.composite;
 
 import java.util.ArrayList;
 
+/**
+ * Esempio "Prima" dell'applicazione del pattern Composite.
+ *
+ * PROBLEMA:
+ * In questo scenario, non esiste un'interfaccia comune tra File e Directory.
+ * La classe Directory e' costretta a gestire i suoi figli come oggetti generici (Object)
+ * e a eseguire controlli di tipo manuali per decidere come comportarsi.
+ *
+ * Svantaggi:
+ * - Accoppiamento stretto e codice fragile (hardcoded type checking).
+ * - Impossibile trattare oggetti semplici e complessi in modo uniforme.
+ * - Difficile aggiungere nuovi tipi di elementi.
+ */
 public class MainBefore {
     static class File {
         private String name;
@@ -28,11 +41,14 @@ public class MainBefore {
         }
 
         /**
-         * here we have 2 possible implementations: File and Directory itself
+         * Metodo critico che mostra il Code Smell.
          *
-         * <p>--> Tree Structure
+         * Invece di sfruttare il polimorfismo, dobbiamo:
+         * 1. Iterare su una lista di Object.
+         * 2. Controllare manualmente il nome della classe (violazione dell'astrazione).
+         * 3. Effettuare un cast esplicito a File o Directory.
          *
-         * <p>We could use Composite
+         * Questo approccio rompe l'astrazione della struttura ad albero.
          */
         public void ls() {
             System.out.println(CompositeDemo.compositeBuilder + name);

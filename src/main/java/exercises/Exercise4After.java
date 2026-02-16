@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO
+ * Mediator Pattern 
+ * per disaccoppiare la classe Customer dalla gestione diretta dei vari sottosistemi (Warehouse, PaymentSystem, ShippingSystem).
+ * Nel "Before", il Customer agiva da orchestratore (alto accoppiamento); nell'"After", il Customer comunica solo con l'interfaccia OrderMediator, delegando a quest'ultima la gestione delle operazioni e rendendo il codice più mantenibile e meno dipendente dalle implementazioni specifiche.
  */
 public class Exercise4After {
     /**

@@ -3,8 +3,8 @@ package exercises;
 import java.util.function.Function;
 
 /**
- * TODO
- * 
+ * Functional Enum Pattern
+ * detto anche: Enum Factory Method Pattern
  */
 public class Exercise1BisAfter {
     public static class VehicleFeature {
