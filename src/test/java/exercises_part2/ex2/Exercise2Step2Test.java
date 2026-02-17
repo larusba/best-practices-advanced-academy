@@ -1,0 +1,17 @@
+package exercises_part2.ex2;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class Exercise2Step2Test {
+    @Test
+    void shouldBuildRequest() {
+        Exercise2Step2.HttpRequest request = Exercise2Step2.HttpRequest.builder()
+                .url("http://google.com")
+                .timeout(2000)
+                .build();
+        
+        // FALLISCE (RED): getUrl è null
+        assertEquals("http://google.com", request.getUrl());
+    }
+}
