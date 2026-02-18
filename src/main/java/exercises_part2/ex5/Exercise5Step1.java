@@ -2,11 +2,11 @@ package exercises_part2.ex5;
 
 /**
  * STEP 1: CODICE LEGACY
- *
+ * 
  * ANALISI CODE SMELL:
  * 1. **Primitive Obsession:** Lo stato è gestito tramite stringhe ("NEW", "PAID").
  * 2. **Logica Condizionale:** Ogni metodo deve controllare lo stato corrente con if/else.
- *
+ * 
  * FEATURE FUTURA:
  * - Aggiungere uno stato "REFUNDED" che permette il rimborso solo se l'ordine è "PAID".
  */

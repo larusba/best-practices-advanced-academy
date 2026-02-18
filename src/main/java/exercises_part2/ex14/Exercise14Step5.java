@@ -1,8 +1,15 @@
 package exercises_part2.ex14;
 
 public class Exercise14Step5 {
-    static class Lights { void strobe() {} }
-    static class Stereo { void loud() {} }
+    static class Lights {
+        void strobe() {
+        }
+    }
+
+    static class Stereo {
+        void loud() {
+        }
+    }
 
     public static class HomeFacade {
         private Lights lights;

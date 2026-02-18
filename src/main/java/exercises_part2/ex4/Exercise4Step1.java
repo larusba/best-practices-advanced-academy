@@ -2,12 +2,12 @@ package exercises_part2.ex4;
 
 /**
  * STEP 1: CODICE LEGACY
- *
+ * 
  * ANALISI CODE SMELL:
  * 1. **Violazione Open/Closed Principle:** Per aggiungere un nuovo metodo di pagamento,
  * dobbiamo modificare la classe `PaymentProcessor` aggiungendo un altro `else if`.
  * 2. **Complessità Ciclomatica:** Troppe condizioni annidate rendono il codice fragile.
- *
+ * 
  * FEATURE FUTURA DA IMPLEMENTARE:
  * - Aggiungere il supporto per pagamenti in criptovaluta (Bitcoin).
  */

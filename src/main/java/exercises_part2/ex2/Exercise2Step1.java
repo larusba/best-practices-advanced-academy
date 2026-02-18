@@ -2,11 +2,11 @@ package exercises_part2.ex2;
 
 /**
  * STEP 1: CODICE LEGACY
- *
+ * 
  * OBIETTIVI REFACTORING:
  * 1. Migliorare la leggibilità della creazione dell'oggetto (rimuovere costruttore telescopico).
  * 2. Gestire valori di default in modo trasparente.
- *
+ * 
  * FEATURE FUTURA:
  * - Aggiungere un campo opzionale "Token" per l'autenticazione.
  */

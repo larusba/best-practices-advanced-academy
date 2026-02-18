@@ -1,8 +1,21 @@
 package exercises_part2.ex14;
 
+/**
+ * REFACTORING COMPLETATO (GREEN)
+ * 
+ * FEATURE:
+ * - Implementare "Party Mode" che configura i sistemi in modo diverso.
+ */
 public class Exercise14Step3 {
-    static class Lights { void dim() {} }
-    static class TV { void on() {} }
+    public static class Lights {
+        void dim() {
+        }
+    }
+
+    public static class TV {
+        void on() {
+        }
+    }
 
     public static class HomeFacade {
         private Lights lights;

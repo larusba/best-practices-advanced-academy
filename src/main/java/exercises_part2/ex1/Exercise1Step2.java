@@ -2,14 +2,14 @@ package exercises_part2.ex1;
 
 /**
  * STEP 2: DESIGN DELL'ARCHITETTURA (RED)
- *
+ * 
  * OBIETTIVO REFACTORING:
  * Applicare la **DEPENDENCY INJECTION** e la **LAYERED ARCHITECTURE**.
  * * PIANO D'AZIONE:
  * 1. Creare un'interfaccia `UserRepository` per astrarre l'accesso ai dati.
  * 2. Creare una classe `UserService` per contenere la logica di business pura.
  * 3. Iniettare il Repository nel Service tramite costruttore.
- *
+ * 
  * NOTA:
  * I metodi sono vuoti (Stub) per permettere la compilazione del test, ma il test fallirà.
  */

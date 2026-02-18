@@ -2,11 +2,11 @@ package exercises_part2.ex6;
 
 /**
  * STEP 1: CODICE LEGACY
- *
+ * 
  * ANALISI CODE SMELL:
  * 1. **Catena di IF rigida:** Per aggiungere un nuovo livello di gestione, bisogna modificare il metodo centrale.
  * 2. **Difficoltà di configurazione:** Non posso cambiare dinamicamente l'ordine di gestione.
- *
+ * 
  * FEATURE FUTURA:
  * - Aggiungere un filtro "SpamFilter" che blocca certi messaggi prima che vengano loggati.
  */

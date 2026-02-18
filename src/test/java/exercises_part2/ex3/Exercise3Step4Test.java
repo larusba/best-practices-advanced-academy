@@ -8,14 +8,14 @@ public class Exercise3Step4Test {
     void alarmShouldSound() {
         Exercise3Step4.FileMonitor monitor = new Exercise3Step4.FileMonitor();
         Exercise3Step4.Alarm mockAlarm = mock(Exercise3Step4.Alarm.class);
-        
-        // Nel test (RED), proviamo a simulare l'integrazione con un adattatore
-        // che ancora non esiste come classe concreta.
-        Exercise3Step4.FileListener alarmAdapter = () -> mockAlarm.ring();
-        
-        monitor.addListener(alarmAdapter);
+
+        // Uso la classe reale AlarmListener (che è vuota)
+        Exercise3Step4.AlarmListener myListener = new Exercise3Step4.AlarmListener(mockAlarm);
+
+        monitor.addListener(myListener);
         monitor.fileDetected();
-        
+
+        // FALLISCE (RED): AlarmListener.onFile() è vuoto, quindi alarm.ring() non viene chiamato
         verify(mockAlarm).ring();
     }
 }

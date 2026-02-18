@@ -1,5 +1,11 @@
 package exercises_part2.ex1;
 
+/**
+ * REFACTORING COMPLETATO (GREEN)
+ * 
+ * ORA IMPLEMENTIAMO LA FEATURE:
+ * - Impedire la registrazione di email provenienti dal dominio "spam.com".
+ */
 public class Exercise1Step3 {
     public interface UserRepository {
         void save(String email);

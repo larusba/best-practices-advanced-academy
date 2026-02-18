@@ -2,13 +2,15 @@ package exercises_part2.ex13;
 
 /**
  * STEP 2: DESIGN NULL OBJECT (RED)
- *
+ * 
  * OBIETTIVO:
  * Creare un oggetto `NullLogger` che non fa nulla, da usare al posto di `null`.
  * Rimuovere i check nel service.
  */
 public class Exercise13Step2 {
-    public interface Logger { void log(String msg); }
+    public interface Logger {
+        void log(String msg);
+    }
 
     public static class NullLogger implements Logger {
         public void log(String msg) { /* Do nothing */ }

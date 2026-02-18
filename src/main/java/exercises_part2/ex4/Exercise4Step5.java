@@ -1,10 +1,14 @@
 package exercises_part2.ex4;
 
 public class Exercise4Step5 {
-    public interface PaymentMethod { void pay(double amount); }
-    
+    public interface PaymentMethod {
+        void pay(double amount);
+    }
+
     public static class PaymentProcessor {
-        public void process(PaymentMethod method, double amount) { method.pay(amount); }
+        public void process(PaymentMethod method, double amount) {
+            method.pay(amount);
+        }
     }
 
     // Implementazione Reale

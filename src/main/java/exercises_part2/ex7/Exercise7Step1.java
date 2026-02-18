@@ -2,11 +2,11 @@ package exercises_part2.ex7;
 
 /**
  * STEP 1: CODICE LEGACY
- *
+ * 
  * ANALISI CODE SMELL:
  * 1. **Duplicazione Codice (DRY Violation):** `CsvMiner` e `JsonMiner` hanno metodi identici (`openFile`, `closeFile`, `analyze`).
  * 2. **Rischio di Inconsistenza:** Se cambio la logica di `openFile` in una classe, devo ricordarmi di cambiarla anche nell'altra.
- *
+ * 
  * FEATURE FUTURA:
  * - Aggiungere supporto per XMLMiner senza copiare-incollare di nuovo tutto il codice comune.
  */
